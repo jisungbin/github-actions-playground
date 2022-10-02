@@ -22,7 +22,6 @@ jobs:
 
       - name: Commit and Push generate files
         run: |
-          git init
           git config user.name "jisungbin"
           git config user.email "ji@sungb.in"
           git add .
