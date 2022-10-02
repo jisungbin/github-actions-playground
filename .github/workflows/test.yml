@@ -5,14 +5,29 @@ on:
 
 jobs:
   test:
-    if: ${{ 
-        contains(github.event.pull_request.labels.*.name, 'test_woo!') &&
-        (contains(github.event.pull_request.labels.*.name, 'test_boo!') ||
-          contains(github.event.pull_request.labels.*.name, 'test_bar!')
-        )
-      }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: boo!
-        run: echo "boo!"
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Touch foo.txt
+        run: touch foo.txt
+
+      - name: Create foo.txt
+        run: echo "foo!" > ./foo.txt
+
+      - name: Touch bar.txt
+        run: touch bar.txt
+
+      - name: Create bar.txt
+        run: echo "bar!" > ./bar.txt
+
+      - name: Commit and Push generate files
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: jisungbin
+          author_email: ji@sungb.in
+          message: '[CI] bump versions'
