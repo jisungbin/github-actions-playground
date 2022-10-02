@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    if: contains(github.event.pull_request.labels.*.name, 'test*')
+    if: contains(github.event.pull_request.labels.*.name, 'test_woo!')
     runs-on: ubuntu-latest
 
     steps:
