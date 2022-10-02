@@ -5,14 +5,25 @@ on:
 
 jobs:
   test:
-    if: ${{ 
-        contains(github.event.pull_request.labels.*.name, 'test_woo!') &&
-        (contains(github.event.pull_request.labels.*.name, 'test_boo!') ||
-          contains(github.event.pull_request.labels.*.name, 'test_bar!')
-        )
-      }}
     runs-on: ubuntu-latest
 
     steps:
-      - name: boo!
-        run: echo "boo!"
+      - name: Touch foo.txt
+        run: touch foo.txt
+
+      - name: Create foo.txt
+        run: echo "foo!" > ./foo.txt
+
+      - name: Touch bar.txt
+        run: touch bar.txt
+
+      - name: Create bar.txt
+        run: echo "bar!" > ./bar.txt
+
+      - name: Commit and Push generate files
+        run: |
+          git config user.name "jisungbin"
+          git config user.email "ji@sungb.in"
+          git add .
+          git commit -m "[CI] bump versions"
+          git push
