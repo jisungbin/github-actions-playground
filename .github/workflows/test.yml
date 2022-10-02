@@ -22,16 +22,16 @@ jobs:
       - name: Create bar.txt
         run: echo "bar!" > ./bar.txt
 
-      # - name: Commit and Push generate files
-      #   run: |
-      #     git config user.name "jisungbin"
-      #     git config user.email "ji@sungb.in"
-      #     git add .
-      #     git commit -m "[CI] bump versions"
-      #     git push
+      - name: Commit and Push generate files
+        run: |
+          git config user.name "jisungbin"
+          git config user.email "ji@sungb.in"
+          git add .
+          git commit -m "[CI] bump versions"
+          git push origin HEAD:test
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          author_name: jisungbin
-          author_email: ji@sungb.in
-          message: '[CI] bump versions'
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: jisungbin
+      #     author_email: ji@sungb.in
+      #     message: '[CI] bump versions'
