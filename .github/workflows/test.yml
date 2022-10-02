@@ -6,8 +6,10 @@ on:
 jobs:
   test:
     if: ${{ 
-      contains(github.event.pull_request.labels.*.name, 'test_woo!')
-      && contains(github.event.pull_request.labels.*.name, 'test_boo!')
+        contains(github.event.pull_request.labels.*.name, 'test_woo!') &&
+        (contains(github.event.pull_request.labels.*.name, 'test_boo!') ||
+          contains(github.event.pull_request.labels.*.name, 'test_bar!')
+        )
       }}
     runs-on: ubuntu-latest
 
