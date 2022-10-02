@@ -20,8 +20,17 @@ jobs:
       - name: Create bar.txt
         run: echo "bar!" > ./bar.txt
 
-      - uses: EndBug/add-and-commit@v9
-        with:
-          author_name: jisungbin
-          author_email: ji@sungb.in
-          message: '[CI] bump versions'
+      - name: Commit and Push generate files
+        run: |
+          git init
+          git config user.name "jisungbin"
+          git config user.email "ji@sungb.in"
+          git add .
+          git commit -m "[CI] bump versions"
+          git push
+
+      # - uses: EndBug/add-and-commit@v9
+      #   with:
+      #     author_name: jisungbin
+      #     author_email: ji@sungb.in
+      #     message: '[CI] bump versions'
