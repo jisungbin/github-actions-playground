@@ -7,7 +7,7 @@ jobs:
   test:
     if: ${{ 
       contains(github.event.pull_request.labels.*.name, 'test_woo!')
-      || contains(github.event.pull_request.labels.*.name, 'test_boo!')
+      && contains(github.event.pull_request.labels.*.name, 'test_boo!')
       }}
     runs-on: ubuntu-latest
 
