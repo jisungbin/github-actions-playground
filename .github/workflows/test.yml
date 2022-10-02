@@ -1,0 +1,13 @@
+name: test
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    if: contains(github.event.pull_request.labels.*.name, 'test')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: boo!
+        run: echo "boo!"
