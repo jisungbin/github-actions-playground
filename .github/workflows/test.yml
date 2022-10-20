@@ -12,4 +12,4 @@ jobs:
       - name: print all labeled list with json
         run: |
           echo "Labeled list: ${{ toJson(github.event.pull_request.labels) }}"
-          echo "Labeled list: ${{ toJson(github.event.pull_request.labels.*.name) }}"
+          echo "Labeled list only name: ${{ toJson(github.event.pull_request.labels.*.name) }}"
