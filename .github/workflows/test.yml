@@ -15,4 +15,4 @@ jobs:
 
       - name: Echo labeled_names local env
         run: |
-          echo ${{ toJson(github.event.pull_request.labels.*.name) }}"
+          echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
