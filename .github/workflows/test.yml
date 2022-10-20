@@ -12,7 +12,7 @@ jobs:
       - name: Set labeled name list as env
         id: labeled
         run: |
-          echo "names=${{ fromJson(github.event.pull_request.labels.*.name) }}" >> $GITHUB_OUTPUT
+          echo "names=${{ toJson(github.event.pull_request.labels.*.name) }}" >> $GITHUB_OUTPUT
 
       - name: Echo labeled_names local env
         run: |
