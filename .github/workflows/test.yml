@@ -9,8 +9,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: print all labeled list with json
-        run: echo ${{ toJson(github.event.pull_request.labels) }}
-
       - name: print all labeled list without json
         run: echo ${{ github.event.pull_request.labels }}
