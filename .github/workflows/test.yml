@@ -10,14 +10,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Set labeled name list as env
-        id: labeled_name
+        id: labeled
         run: |
-          echo "::set-output name=labeled_names::toJson(github.event.pull_request.labels.*.name)"
-
-      - name: Echo labeled name list without json mapping
-        run: |
-          echo "${{ github.event.pull_request.labels.*.name }}"
+          echo "names=${{ toJson(github.event.pull_request.labels.*.name) }}" >> $GITHUB_OUTPUT
 
       - name: Echo labeled_names local env
         run: |
-          echo "${{ steps.labeled_name.outputs.labeled_names }}"
+          echo "${{ steps.labeled.outputs.names }}"
