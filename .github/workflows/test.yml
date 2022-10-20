@@ -8,33 +8,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
 
-      - name: Touch foo.txt
-        run: touch foo.txt
+      - name: print all labeled list with json
+        run: echo ${{ toJson(github.event.pull_request.labels) }}
 
-      - name: Create foo.txt
-        run: echo "foo! - 2" > ./foo.txt
-
-      - name: Touch bar.txt
-        run: touch bar.txt
-
-      - name: Create bar.txt
-        run: echo "bar! - 2" > ./bar.txt
-
-      - name: Commit and Push generate files
-        run: |
-          git config user.name "jisungbin"
-          git config user.email "ji@sungb.in"
-          git add .
-          git commit -m "[CI] bump versions"
-          git push
-
-      # - name: Commit and Push generate files
-      #   uses: EndBug/add-and-commit@v9
-      #   with:
-      #     author_name: jisungbin
-      #     author_email: ji@sungb.in
-      #     message: '[CI] bump versions'
+      - name: print all labeled list without json
+        run: echo ${{ github.event.pull_request.labels }}
