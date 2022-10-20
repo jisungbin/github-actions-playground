@@ -1,3 +1,3 @@
 # github-actions-playground
 
-yes? or no!
+yes
