@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Echo workspace directory
+        run: echo $GITHUB_WORKSPACE
+
       - name: quack-parse-version-actions
         id: version
         uses: duckie-team/quack-parse-version-actions@1.0.0
