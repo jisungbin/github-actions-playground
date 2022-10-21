@@ -4,39 +4,10 @@ on:
 
 jobs:
   test:
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: quack-label-filter-actions
+        uses: duckie-team/quack-label-filter-actions@0.0.1
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
-          fetch-depth: 0
-
-      - name: Touch foo.txt
-        run: touch foo3.txt
-
-      - name: Create foo.txt
-        run: echo "foo! - 2" > ./foo3.txt
-
-      - name: Export version
-        id: version
-        run: echo "version=1.0.1" >> $GITHUB_OUTPUT
-
-      - name: Commit and Push generate files
-        run: |
-          git config user.name "jisungbin"
-          git config user.email "ji@sungb.in"
-          git add .
-          git commit -m "${{ steps.version.outputs.version }}"
-          git tag ${{ steps.version.outputs.version }}
-          git push
-
-      - name: Create Release
-        uses: ncipollo/release-action@v1.11.1
-        with:
-          generateReleaseNotes: true
-          name: "버전: ${{ steps.version.outputs.version }}"
-          tag: ${{ steps.version.outputs.version }}
+          labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
