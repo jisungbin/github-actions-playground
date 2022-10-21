@@ -11,7 +11,7 @@ jobs:
 
       - name: quack-parse-version-actions
         id: version
-        uses: duckie-team/quack-parse-version-actions@1.0.0
+        uses: duckie-team/quack-parse-version-actions@1.0.1
         with:
           path: "${{ github.workspace }}/playground.txt"
 
