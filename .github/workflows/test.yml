@@ -4,9 +4,8 @@ on:
 
 jobs:
   test:
-    if: contains(github.event.pull_request.labels.*.name, 'test_bar!')
     runs-on: ubuntu-latest
 
     steps:
-      - name: echo
-        run: echo HelloWorld!
+      - name: echo labels
+        run: echo ${{ toJson(github.event.pull_request.labels.*.name) }}
