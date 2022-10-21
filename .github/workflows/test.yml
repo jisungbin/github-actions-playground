@@ -14,16 +14,10 @@ jobs:
           fetch-depth: 0
 
       - name: Touch foo.txt
-        run: touch foo.txt
+        run: touch foo2.txt
 
       - name: Create foo.txt
-        run: echo "foo! - 2" > ./foo.txt
-
-      - name: Touch bar.txt
-        run: touch bar.txt
-
-      - name: Create bar.txt
-        run: echo "bar! - 2" > ./bar.txt
+        run: echo "foo! - 2" > ./foo2.txt
 
       - name: Export version
         id: version
@@ -35,5 +29,5 @@ jobs:
           git config user.email "ji@sungb.in"
           git add .
           git commit -m "${{ steps.version.outputs.version }}"
-          git tag "${{ steps.version.outputs.version }}"
+          git tag ${{ steps.version.outputs.version }}
           git push
