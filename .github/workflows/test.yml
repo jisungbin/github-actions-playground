@@ -11,7 +11,7 @@ jobs:
         id: version
         uses: duckie-team/quack-parse-version-actions@1.0.0
         with:
-          path: playground.txt
+          path: ./playground.txt
 
       - name: Echo QuackQuack version
         run: |
