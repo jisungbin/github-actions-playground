@@ -14,8 +14,8 @@ jobs:
           labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
 
       - name: Quack version parsing
-        uses: duckie-team/quack-parse-version-actions@1.0.1
         id: version
+        uses: duckie-team/quack-parse-version-actions@1.0.1
         with:
           path: ${{ steps.label.outputs.version_path }}
 
