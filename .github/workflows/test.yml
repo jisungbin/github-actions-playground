@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: quack-label-filter-actions
         id: label
-        uses: duckie-team/quack-label-filter-actions@1.0.0
+        uses: duckie-team/quack-label-filter-actions@1.0.1
         with:
           labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
 
