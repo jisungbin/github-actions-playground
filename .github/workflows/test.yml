@@ -13,7 +13,7 @@ jobs:
         with:
           labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
 
-      - name: Echo label options
+      - name: Echo label options!
         run: |
           echo ${{ steps.label.outputs.bump_type }}
           echo ${{ steps.label.outputs.release_target }}
