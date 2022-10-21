@@ -13,11 +13,18 @@ jobs:
         with:
           labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
 
-      - name: Echo label options!!
+      - name: Quack version parsing
+        uses: duckie-team/quack-parse-version-actions@1.0.1
+        id: version
+        with:
+          path: ${{ steps.label.outputs.version_path }}
+
+      - name: Echo variables
         run: |
           echo ${{ steps.label.outputs.bump_type }}
           echo ${{ steps.label.outputs.release_target }}
           echo ${{ steps.label.outputs.is_snapshot }}
           echo ${{ steps.label.outputs.publish_module_id }}
-          echo ${{ steps.label.outputs.publish_module_id }}:publish
+          echo ./gradlew ${{ steps.label.outputs.publish_module_id }}:publish
           echo ${{ steps.label.outputs.version_path }}
+          echo ${{ steps.version.outputs.version }}
