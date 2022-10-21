@@ -7,26 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: quack-label-filter-actions
-        id: label
-        uses: duckie-team/quack-label-filter-actions@1.0.2
-        with:
-          labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
-
-      - name: Quack version parsing
-        id: version
-        uses: duckie-team/quack-parse-version-actions@1.0.1
-        with:
-          path: ${{ steps.label.outputs.version_path }}
-
-      - name: Echo variables
-        run: |
-          echo ${{ steps.label.outputs.bump_type }}
-          echo ${{ steps.label.outputs.release_target }}
-          echo ${{ steps.label.outputs.is_snapshot }}
-          echo ${{ steps.label.outputs.publish_module_id }}
-          echo ./gradlew ${{ steps.label.outputs.publish_module_id }}:publish
-          echo ${{ steps.label.outputs.version_path }}
-          echo ${{ steps.version.outputs.version }}
+      - run: >
+          echo Hello
+          World
+          This
+          Is
+          AWESOME!!
+          New
+          Lines.
