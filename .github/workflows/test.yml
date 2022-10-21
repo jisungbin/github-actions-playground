@@ -8,6 +8,15 @@ jobs:
 
     steps:
       - name: quack-label-filter-actions
-        uses: duckie-team/quack-label-filter-actions@0.0.1
+        id: label
+        uses: duckie-team/quack-label-filter-actions@1.0.0
         with:
           labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
+
+      - name: Echo label options
+        run: |
+          echo ${{ steps.label.outputs.bump_type }}
+          echo ${{ steps.label.outputs.release_target }}
+          echo ${{ steps.label.outputs.publish_module_id }}
+          echo ${{ steps.label.outputs.is_snapshot }}
+          echo ${{ steps.label.outputs.publish_module_id }}:publish
