@@ -7,16 +7,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: quack-label-filter-actions
-        id: label
-        uses: duckie-team/quack-label-filter-actions@1.0.1
+      - name: quack-parse-version-actions
+        id: version
+        uses: duckie-team/quack-parse-version-actions@1.0.0
         with:
-          labels: "${{ toJson(github.event.pull_request.labels.*.name) }}"
+          path: playground.txt
 
-      - name: Echo label options!!
+      - name: Echo QuackQuack version
         run: |
-          echo ${{ steps.label.outputs.bump_type }}
-          echo ${{ steps.label.outputs.release_target }}
-          echo ${{ steps.label.outputs.publish_module_id }}
-          echo ${{ steps.label.outputs.is_snapshot }}
-          echo ${{ steps.label.outputs.publish_module_id }}:publish
+          echo ${{ steps.version.outputs.version }}
