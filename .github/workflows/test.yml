@@ -8,4 +8,4 @@ jobs:
 
     steps:
       - name: echo labels
-        run: echo ${{ toJson(github.event.pull_request.labels.*.name) }}
+        run: echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
