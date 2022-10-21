@@ -17,7 +17,7 @@ jobs:
         run: |
           echo ${{ steps.label.outputs.bump_type }}
           echo ${{ steps.label.outputs.release_target }}
-          echo ${{ steps.label.outputs.publish_module_id }}
           echo ${{ steps.label.outputs.is_snapshot }}
+          echo ${{ steps.label.outputs.publish_module_id }}
           echo ${{ steps.label.outputs.publish_module_id }}:publish
-          echo ${{ steps.label.outputs.version_path }}:publish
+          echo ${{ steps.label.outputs.version_path }}
