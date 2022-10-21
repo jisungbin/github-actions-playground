@@ -7,13 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: quack-parse-version-actions
         id: version
         uses: duckie-team/quack-parse-version-actions@1.0.0
         with:
           path: "${{ github.workspace }}/playground.txt"
 
+      - name: quack-parse-version-actions
+        id: version2
+        uses: duckie-team/quack-parse-version-actions@1.0.0
+        with:
+          path: playground.txt
+
       - name: Echo QuackQuack version
         run: |
           echo ${{ steps.version.outputs.version }}
-          echo HI!
+          echo ${{ steps.version2.outputs.version }}
