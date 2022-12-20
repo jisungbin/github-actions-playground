@@ -7,11 +7,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: >
-          echo Hello
-          World
-          This
-          Is
-          AWESOME!!
-          New
-          Lines.
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Touch test.txt
+        run: touch test.txt
+
+      - name: Create test.txt
+        run: echo "test!" > ./test.txt
+
+      - name: Commit and Push generate files
+        run: |
+          git config user.name "jisungbin"
+          git config user.email "ji@sungb.in"
+          git add .
+          git commit -m "[CI] test"
+          git push
